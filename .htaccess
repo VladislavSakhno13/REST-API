@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteRule ^api/customers/?$ api/persons.php
+RewriteRule ^api/customers/([0-9]+)?$ api/persons.php?id=$1
+
+RewriteRule ^api/place/?$ api/place.php
+RewriteRule ^api/place/([0-9]+)?$ api/place.php?id=$1
+
+RewriteRule ^api/reviews/?$ api/reviews.php
+RewriteRule ^api/reviews/([0-9]+)?$ api/reviews.php?id=$1
+
+RewriteRule ^api/assessment/?$ api/assessment.php
+RewriteRule ^api/assessment/([0-9]+)?$ api/assessment.php?id=$1

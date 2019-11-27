@@ -49,12 +49,9 @@
     }
     else if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
             if(isset($_GET['id'])){
-            $string = $conect->query("SELECT * FROM `assessment` WHERE `id` = $_GET[id]");
-            $resault = mysqli_fetch_row($string);
-            $data = [
-                "id" => $_GET['id'],
-                "assessment" => $resault[1]
-            ];
+            //$string = $conect->query("SELECT * FROM `assessment` WHERE `id` = $_GET[id]");
+            //$resault = mysqli_fetch_row($string);
+            $data = null;
             $conect->query("DELETE  FROM `assessment` WHERE `id` = $_GET[id]");
             exit(json_encode($data));
         } else exit(json_encode('error'));

@@ -48,10 +48,7 @@
             if(isset($_GET['id'])){
             $string = $conect->query("SELECT * FROM `reviews` WHERE `id` = $_GET[id]");
             $resault = mysqli_fetch_row($string);
-            $data = [
-                "id" => $_GET['id'],
-                "reviews_del" => $resault[1]
-            ];
+            $data = null;
             $conect->query("DELETE  FROM `reviews` WHERE `id` = $_GET[id]");
             exit(json_encode($data));
         } else exit(json_encode('error'));

@@ -1,7 +1,6 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
 import axios from 'axios';
-//var ItemsList = require('./component/ItemsList.jsx');
 import Assessment from './component/ItemsList.jsx';
 let assess = new Assessment;
 class POST extends React.Component {
@@ -38,23 +37,23 @@ class POST extends React.Component {
       showData(){
          let AssessmentData = {
              assessment: this.state.assessment,
-             person_id:"145",
-             place_id:"129",
-             assessment_id:"124"
+             person_id:"",
+             place_id:"",
+             assessment_id:""
          }
          const strA = JSON.stringify(AssessmentData);
-        console.log(strA);
         assess.PostRecuest(strA);
     }
 
 render () {
+    
     return (
         <div>
             <form>
                <label >Имя:</label><br/>
                 <input  type="text"  value={this.state.name} onChange={this.submitName}/><br/>
                 <label>Оценка:</label>
-                <select value={this.state.reviews} onChange={this.submitReviews}>
+                <select  value={this.state.reviews} onChange={this.submitReviews}>
                 <option value="" selected disabled hidden>Выберите число</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -83,4 +82,16 @@ render () {
 }
 
 ReactDOM.render(<POST/>,document.getElementById('app'));
-
+class GET extends React.Component {
+    getdata(){
+     assess.GetRecuest();
+    }
+    render(){
+        return(
+            <div>
+                <input type="button" value="получить" onClick={this.getdata}></input>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<GET/>,document.getElementById('get'));

@@ -1,0 +1,23 @@
+*{
+    margin: auto;
+}
+#app{
+    width: 100%;
+    max-width: 1400px;
+    height: 300px;
+    border: 1px solid #000;
+    
+}
+#get{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    border: 1px solid #000;
+    max-width: 1400px;
+    
+    
+}
+
+.basic{
+  
+}

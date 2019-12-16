@@ -6,11 +6,11 @@
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         if(isset($_GET['id'])){
             $id = $conect->real_escape_string($_GET['id']);
-            $sql = $conect->query("SELECT place FROM `a place` WHERE id = '$id'");
+            $sql = $conect->query("SELECT * FROM `a place` WHERE id = '$id'");
             $data = $sql->fetch_assoc();
         } else{
             $data = array();
-            $sql = $conect->query("SELECT `place` FROM `a place`");
+            $sql = $conect->query("SELECT * FROM `a place`");
             while ($d = $sql->fetch_assoc()) {
                 $data[] = $d;   
             }
@@ -48,10 +48,7 @@
             if(isset($_GET['id'])){
             $string = $conect->query("SELECT * FROM `a place` WHERE `id` = $_GET[id]");
             $resault = mysqli_fetch_row($string);
-            $data = [
-                "id" => $_GET['id'],
-                "string" => $resault[1]
-            ];
+            $data = null;
             $conect->query("DELETE  FROM `a place` WHERE `id` = $_GET[id]");
             exit(json_encode($data));
         } else exit(json_encode('error'));

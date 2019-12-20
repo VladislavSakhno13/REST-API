@@ -1,8 +1,8 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
 import axios from 'axios';
-import Assessment from './component/ItemsList.jsx';
-let assess = new Assessment;
+import * as exp from './component/ItemsList.js';
+
 class POST extends React.Component {
     constructor(props){
         super(props);
@@ -37,12 +37,21 @@ class POST extends React.Component {
       showData(){
          let AssessmentData = {
              assessment: this.state.assessment,
-             person_id:"",
-             place_id:"",
-             assessment_id:""
+             person_id:"203",
+             place_id:"187",
+             assessment_id:"182"
          }
-         const strA = JSON.stringify(AssessmentData);
-        assess.PostRecuest(strA);
+         let customersD = {
+             name: this.state.name
+         }
+         let reviewsD = {
+             reviews: this.state.reviews
+         }
+         let placeD = {
+             place: this.state.place
+         }
+         
+        exp.PostRecuest(AssessmentData,customersD,reviewsD,placeD);
     }
 
 render () {
@@ -83,13 +92,28 @@ render () {
 
 ReactDOM.render(<POST/>,document.getElementById('app'));
 class GET extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+           id:""
+        };
+       this.getId=this.getId.bind(this);
+       this.getdata=this.getdata.bind(this);
+    }
+    getId(event){
+        let val = event.target.value;
+        this.setState({id: val});
+    }
     getdata(){
-     assess.GetRecuest();
+        let id = this.state.id;
+     exp.GetRecuest(id);
     }
     render(){
         return(
             <div>
+                 <input type="text" onChange={this.getId}></input>
                 <input type="button" value="получить" onClick={this.getdata}></input>
+                <div id="ower"></div>
             </div>
         );
     }
